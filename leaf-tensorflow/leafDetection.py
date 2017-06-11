@@ -20,7 +20,7 @@ image_paths = glob.glob("images/*")
 print "Amount of images =", len(image_paths)
 
 # plot 10 images
-# as we need all images to have the same dimensionality, we will resize and plot
+# need all images to have the same dimensionality, so resize and plot
 # make the images as small as possible, until the difference between starts to get blurry
 for i in range(10):
     image = imread(image_paths[i], as_grey=True)
