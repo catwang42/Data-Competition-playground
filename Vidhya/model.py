@@ -15,13 +15,13 @@ df = pd.read_csv('/Users/zhizhenwang/GoogleDrive/Project/Vidhya/cleandata.csv')
 #Generic funciton for making a classificaiton mode and accessing performance 
 def classification_model(model, data, predictors, outcome):
     #Fir model
-    model.fit(data[predictors],data[outcome])
+    model.fit(data[predictors].values,data[outcome].values)
     
     #prediction 
-    predictions = model.predict(data[predictors])
+    predictions = model.predict(data[predictors].values)
     
     #accuracy 
-    accuracy = metrics.accuracy_score(predictions,data[outcome])
+    accuracy = metrics.accuracy_score(predictions,data[outcome].values)
     print("Accuracy : %s" % "{0:.3%}".format(accuracy))
     
     #k-fold cross_validation with 5 folds

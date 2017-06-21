@@ -80,12 +80,17 @@ df['Married'].value_counts()
 df['Married'].fillna('No',inplace=True)
 #df['Dependents'].fillna(0,inplace=True)
 #df.ix[df.Dependents==0,'Dependents']='0'
-
+df['Dependents'].fillna('0',inplace=True)
 df['Gender'].fillna('Male',inplace=True)
 
-from sklearn.preprocessing import Imputer
-imp = Imputer(missing_values='NaN', strategy='mean', axis=0)
-imp.fit(df['Credit_History'])
+#from sklearn.preprocessing import Imputer
+#imp = Imputer(missing_values='NaN', strategy='mean', axis=0)
+#imp.fit(df['Credit_History'].values)
+#imp.transform(df['Credit_History'].values)
+#imp.transform(df['Credit_History'])
+#imp.fit(df['Loan_Amount_Term'])
+df['Credit_History'].fillna(df['Credit_History'].mean(),inplace=True)
+df['Loan_Amount_Term'].fillna(df['Loan_Amount_Term'].mean(),inplace=True)
 
 #normalise extreme value by taking log value 
 df['LoanAmount_log'] = np.log(df['LoanAmount'])
